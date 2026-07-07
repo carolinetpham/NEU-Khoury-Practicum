@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    container_name: practicum-site
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    env_file:
+      - .env.local
+    command: npm run dev
