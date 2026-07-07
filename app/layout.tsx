@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavBar from "@/app/components/NavBar";
+import { SanityLive } from "@/sanity/lib/live";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <NavBar />
         {children}
+        <SanityLive />
       </body>
     </html>
   );
