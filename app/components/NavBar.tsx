@@ -53,10 +53,10 @@ export default function NavBar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-[--brand-white]/80 backdrop-blur-md transition-shadow duration-300",
+        "sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300",
         scrolled
-          ? "border-b border-black/10 shadow-[0_1px_0_rgba(0,0,0,0.04)]"
-          : "border-b border-transparent"
+          ? "border-b border-black/10 bg-white/82 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
       )}
     >
       <nav
@@ -72,12 +72,12 @@ export default function NavBar() {
         {/* Desktop nav */}
         <div
           ref={containerRef}
-          className="relative hidden items-center gap-0.5 rounded-full border border-black/8 bg-[--brand-white-soft]/90 p-1 shadow-[0_10px_30px_rgba(0,0,0,0.05)] md:flex"
+          className="relative hidden items-center gap-0.5 rounded-full border border-black/10 bg-white/80 p-1 backdrop-blur-md md:flex"
         >
           {indicator && (
             <div
               aria-hidden
-              className="absolute inset-y-1 rounded-full bg-linear-to-b from-[--brand-black-soft] to-[--brand-black] shadow-[0_4px_12px_rgba(0,0,0,0.18)] transition-[left,width] duration-300 ease-out"
+              className="absolute inset-y-1 rounded-full bg-linear-to-b from-[--brand-black-soft] to-[--brand-black] transition-[left,width] duration-300 ease-out"
               style={{ left: indicator.left, width: indicator.width }}
             />
           )}
