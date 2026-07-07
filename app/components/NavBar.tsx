@@ -137,7 +137,7 @@ export default function NavBar() {
                     active ? "text-[--brand-black]" : "text-black/60 hover:text-[--brand-black]"
                   )}
                 >
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center">
                     {active && <span className="h-1.5 w-1.5 rounded-full bg-[--brand-red]" />}
                     {item.label}
                   </span>
