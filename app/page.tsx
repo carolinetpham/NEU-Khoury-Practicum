@@ -44,7 +44,14 @@ const getCtaIcon = (audience?: HomeCallToAction['audience']) => {
 
 export default async function Home() {
   const {data} = await sanityFetch({query: HOME_PAGE_QUERY})
-  const home = {...fallbackHome, ...(data as HomePageData | null)}
+  const sanityHome = data as HomePageData | null
+  const home = {
+    title: sanityHome?.title?.trim() || fallbackHome.title,
+    subtitle: sanityHome?.subtitle?.trim() || fallbackHome.subtitle,
+    callsToAction: sanityHome?.callsToAction?.length
+      ? sanityHome.callsToAction
+      : fallbackHome.callsToAction,
+  }
   const callsToAction = home.callsToAction?.length
     ? home.callsToAction
     : fallbackHome.callsToAction

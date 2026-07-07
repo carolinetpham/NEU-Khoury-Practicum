@@ -36,7 +36,8 @@ export const homePage = defineType({
       name: 'subtitle',
       title: 'Subtitle',
       type: 'string',
-      description: 'Short line that appears below the title.',
+      description:
+        'Short line that appears below the title. Current site default: "Develop for industry partners".',
       validation: (rule) => rule.required(),
     }),
     defineField({

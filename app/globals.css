@@ -5,11 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --brand-black: #000000;
   --color-brand-black: #000000;
   --brand-black-soft: #1a1a1a;   
   --brand-white-soft: #fafafa;   
   --brand-red-dark: #8f0c22;   
   --brand-red-light: #fbe6e9; 
+  --brand-white: #ffffff;
+  --brand-red: #c8102e;
   --color-brand-white: #ffffff;
   --color-brand-red: #c8102e;
   --background: oklch(1 0 0);
