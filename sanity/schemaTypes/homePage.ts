@@ -92,7 +92,7 @@ export const homePage = defineType({
       name: 'futureMedia',
       title: 'Future Media',
       description:
-        'Optional image or video slots for future homepage media. These are not rendered yet.',
+        'Optional image or video slots for future homepage media.',
       type: 'array',
       of: [
         defineArrayMember({
