@@ -1,0 +1,231 @@
+'use client'
+
+import {useMemo, useState} from 'react'
+import Link from 'next/link'
+import {
+  ArrowUpRight,
+  Grid2X2,
+  List,
+  Search,
+  Server,
+} from 'lucide-react'
+
+import {cn} from '@/lib/utils'
+import type {ProjectItem} from './types'
+
+type ProjectsDashboardProps = {
+  projects: ProjectItem[]
+}
+
+const normalize = (value: string) => value.trim().toLowerCase()
+
+const getSearchText = (project: ProjectItem) =>
+  [
+    project.title,
+    project.client,
+    project.summary,
+    project.status,
+    ...(project.techStack || []),
+    ...(project.highlights || []),
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+
+function ProjectMedia({project}: {project: ProjectItem}) {
+  const imageUrl = project.featuredImage?.asset?.url
+
+  if (imageUrl) {
+    return (
+      <div
+        role="img"
+        aria-label={project.featuredImage?.alt || project.title}
+        className="h-full w-full object-cover"
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+        }}
+      />
+    )
+  }
+
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-white via-[--brand-red-light] to-slate-100">
+      <Server className="h-10 w-10 text-[--brand-red]/45" aria-hidden />
+    </div>
+  )
+}
+
+function ProjectCard({project}: {project: ProjectItem}) {
+  const techPreview = project.techStack?.slice(0, 4) || []
+  const href = project.slug ? `/projects/${project.slug}` : '/projects'
+
+  return (
+    <Link
+      href={href}
+      className="group block overflow-hidden rounded-lg border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-[--brand-red]/35 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[--brand-red]"
+    >
+      <div className="aspect-16/7 overflow-hidden border-b border-black/10">
+        <ProjectMedia project={project} />
+      </div>
+      <div className="p-5">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-[--brand-red]">
+            {project.client}
+          </p>
+          <h2 className="mt-2 text-xl font-semibold leading-tight text-[--brand-black]">
+            {project.title}
+          </h2>
+        </div>
+
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-black/65">
+          {project.summary}
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {techPreview.map((item) => (
+            <span
+              key={item}
+              className="rounded-full bg-[--brand-red-light] px-3 py-1 text-xs font-semibold text-[--brand-red-dark]"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-5 flex items-center justify-end border-t border-black/10 pt-4">
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-[--brand-red] transition group-hover:text-[--brand-red-dark]">
+            View project
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </span>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+function ProjectRow({project}: {project: ProjectItem}) {
+  const href = project.slug ? `/projects/${project.slug}` : '/projects'
+
+  return (
+    <Link
+      href={href}
+      className="grid gap-4 rounded-lg border border-black/10 bg-white p-4 shadow-sm transition hover:border-[--brand-red]/35 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[--brand-red] sm:grid-cols-[10rem_1fr]"
+    >
+      <div className="aspect-video overflow-hidden rounded-md border border-black/10 sm:aspect-auto">
+        <ProjectMedia project={project} />
+      </div>
+      <div className="min-w-0">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-[--brand-red]">
+            {project.client}
+          </p>
+          <h2 className="mt-1 text-xl font-semibold text-[--brand-black]">
+            {project.title}
+          </h2>
+        </div>
+        <p className="mt-2 text-sm leading-6 text-black/65">{project.summary}</p>
+        <div className="mt-4 flex justify-end">
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-[--brand-red]">
+            View project
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </span>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+export default function ProjectsDashboard({projects}: ProjectsDashboardProps) {
+  const [query, setQuery] = useState('')
+  const [view, setView] = useState<'cards' | 'list'>('cards')
+
+  const filteredProjects = useMemo(() => {
+    const term = normalize(query)
+
+    if (!term) {
+      return projects
+    }
+
+    return projects.filter((project) => getSearchText(project).includes(term))
+  }, [projects, query])
+
+  return (
+    <section className="rise-in rise-in-delay-2 mt-10">
+      <div className="flex flex-col gap-3 py-2 sm:flex-row sm:items-center sm:justify-between">
+        <label className="relative block w-full sm:max-w-md">
+          <span className="sr-only">Search projects</span>
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-black/40"
+            aria-hidden
+          />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search projects"
+            className="h-11 w-full rounded-md border border-black/10 bg-white/85 pl-10 pr-4 text-sm text-[--brand-black] shadow-sm outline-none transition placeholder:text-black/40 focus:border-[--brand-red] focus:bg-white focus:ring-0"
+          />
+        </label>
+
+        <div className="inline-flex w-fit rounded-md border border-black/10 bg-white/75 p-1 shadow-sm backdrop-blur">
+          <button
+            type="button"
+            onClick={() => setView('cards')}
+            aria-pressed={view === 'cards'}
+            className={cn(
+              'inline-flex h-9 items-center gap-2 rounded-sm px-3 text-sm font-semibold transition',
+              view === 'cards'
+                ? 'bg-[#c8102e] text-white shadow-sm'
+                : 'text-black/55 hover:bg-white hover:text-[--brand-black]',
+            )}
+          >
+            <Grid2X2 className="h-4 w-4" aria-hidden />
+            Cards
+          </button>
+          <button
+            type="button"
+            onClick={() => setView('list')}
+            aria-pressed={view === 'list'}
+            className={cn(
+              'inline-flex h-9 items-center gap-2 rounded-sm px-3 text-sm font-semibold transition',
+              view === 'list'
+                ? 'bg-[#c8102e] text-white shadow-sm'
+                : 'text-black/55 hover:bg-white hover:text-[--brand-black]',
+            )}
+          >
+            <List className="h-4 w-4" aria-hidden />
+            List
+          </button>
+        </div>
+      </div>
+
+      {filteredProjects.length ? (
+        <div
+          className={
+            view === 'cards'
+              ? 'mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3'
+              : 'mt-6 grid gap-4'
+          }
+        >
+          {filteredProjects.map((project) =>
+            view === 'cards' ? (
+              <ProjectCard key={project._id} project={project} />
+            ) : (
+              <ProjectRow key={project._id} project={project} />
+            ),
+          )}
+        </div>
+      ) : (
+        <div className="mt-6 rounded-lg border border-dashed border-black/15 bg-white/70 px-5 py-12 text-center">
+          <p className="text-base font-semibold text-[--brand-black]">
+            No projects match your search.
+          </p>
+          <p className="mt-2 text-sm text-black/55">
+            Try a project name, partner, or technology.
+          </p>
+        </div>
+      )}
+    </section>
+  )
+}
