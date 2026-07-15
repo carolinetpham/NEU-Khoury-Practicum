@@ -48,9 +48,9 @@ function DetailBlock({
   }
 
   return (
-    <section className="rounded-lg bg-brand-white-soft px-5 py-6 sm:px-6">
-      <h2 className="text-lg font-semibold text-brand-black">{heading}</h2>
-      <div className="mt-4 whitespace-pre-line text-base leading-8 text-brand-black/68">
+    <section className="py-8 first:pt-0 last:pb-0">
+      <h2 className="text-xl font-semibold text-brand-black">{heading}</h2>
+      <div className="mt-3 whitespace-pre-line text-base leading-8 text-brand-black/68">
         {body}
       </div>
     </section>
@@ -130,7 +130,7 @@ export default async function ProjectDetailPage({params}: ProjectPageProps) {
           </div>
 
           {project.techStack?.length ? (
-            <div className="mt-10 rounded-lg border border-brand-black/10 bg-brand-white p-5 shadow-sm">
+            <div className="mt-10 border-t border-brand-black/10 pt-6">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-black/45">
                 Tech stack
               </h2>
@@ -148,7 +148,7 @@ export default async function ProjectDetailPage({params}: ProjectPageProps) {
           ) : null}
 
           <div className="mt-14">
-            <article className="max-w-3xl space-y-5">
+            <article className="max-w-4xl divide-y divide-brand-black/10">
               <DetailBlock heading="Overview" body={project.overview} />
               <DetailBlock heading="Problem" body={project.problem} />
               <DetailBlock heading="Solution" body={project.solution} />

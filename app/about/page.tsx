@@ -193,10 +193,6 @@ export default async function AboutPage() {
                 At a glance
               </h2>
             </div>
-            <p className="max-w-xl text-base leading-7 text-brand-black/60 lg:justify-self-end">
-              A credit-bearing semester built around real client work, close
-              collaboration, and a professional final handoff.
-            </p>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {logistics.map((item, index) => {
