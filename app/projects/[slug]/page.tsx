@@ -23,15 +23,15 @@ function ProjectHeroMedia({project}: {project: ProjectItem}) {
       <div
         role="img"
         aria-label={project.featuredImage?.alt || project.title}
-        className="h-full min-h-64 w-full rounded-lg border border-black/10 bg-cover bg-center shadow-sm"
+        className="h-full min-h-64 w-full rounded-lg border border-brand-black/10 bg-cover bg-center shadow-sm"
         style={{backgroundImage: `url(${imageUrl})`}}
       />
     )
   }
 
   return (
-    <div className="flex min-h-64 items-center justify-center rounded-lg border border-black/10 bg-linear-to-br from-white via-[--brand-red-light] to-slate-100 shadow-sm">
-      <Server className="h-12 w-12 text-[--brand-red]/45" aria-hidden />
+    <div className="flex min-h-64 items-center justify-center rounded-lg border border-brand-black/10 bg-linear-to-br from-brand-white via-brand-red-light to-slate-100 shadow-sm">
+      <Server className="h-12 w-12 text-brand-red/45" aria-hidden />
     </div>
   )
 }
@@ -48,9 +48,9 @@ function DetailBlock({
   }
 
   return (
-    <section className="rounded-lg bg-[--brand-white-soft] px-5 py-6 sm:px-6">
-      <h2 className="text-lg font-semibold text-[--brand-black]">{heading}</h2>
-      <div className="mt-4 whitespace-pre-line text-base leading-8 text-black/68">
+    <section className="rounded-lg bg-brand-white-soft px-5 py-6 sm:px-6">
+      <h2 className="text-lg font-semibold text-brand-black">{heading}</h2>
+      <div className="mt-4 whitespace-pre-line text-base leading-8 text-brand-black/68">
         {body}
       </div>
     </section>
@@ -81,12 +81,12 @@ export default async function ProjectDetailPage({params}: ProjectPageProps) {
   }
 
   return (
-    <main className="page-enter -mt-16 min-h-screen bg-[--brand-white]">
+    <main className="page-enter -mt-16 min-h-screen bg-brand-white">
       <section className="pb-20 pt-36 sm:pt-40">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[--brand-red] transition hover:text-[--brand-red-dark]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-red transition hover:text-brand-red-dark"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Projects
@@ -100,7 +100,7 @@ export default async function ProjectDetailPage({params}: ProjectPageProps) {
               <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-brand-black sm:text-5xl">
                 {project.title}
               </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-black/65">
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-brand-black/65">
                 {project.summary}
               </p>
 
@@ -108,7 +108,7 @@ export default async function ProjectDetailPage({params}: ProjectPageProps) {
                 {project.deploymentUrl ? (
                   <Link
                     href={project.deploymentUrl}
-                    className="inline-flex h-11 items-center gap-2 rounded-md border border-[#c8102e] bg-[#c8102e] px-4 text-sm font-semibold text-white transition hover:border-[#8f0c22] hover:bg-[#8f0c22]"
+                    className="inline-flex h-11 items-center gap-2 rounded-md border border-brand-red bg-brand-red px-4 text-sm font-semibold text-brand-white transition hover:border-brand-red-dark hover:bg-brand-red-dark"
                   >
                     Visit project
                     <ArrowUpRight className="h-4 w-4" aria-hidden />
@@ -117,7 +117,7 @@ export default async function ProjectDetailPage({params}: ProjectPageProps) {
                 {project.repositoryUrl ? (
                   <Link
                     href={project.repositoryUrl}
-                    className="inline-flex h-11 items-center gap-2 rounded-md border border-black/15 bg-white/85 px-4 text-sm font-semibold text-[--brand-black] transition hover:border-[--brand-red]/35 hover:bg-[--brand-red-light]"
+                    className="inline-flex h-11 items-center gap-2 rounded-md border border-brand-black/15 bg-brand-white/85 px-4 text-sm font-semibold text-brand-black transition hover:border-brand-red/35 hover:bg-brand-red-light"
                   >
                     Repository
                     <Code2 className="h-4 w-4" aria-hidden />
@@ -130,15 +130,15 @@ export default async function ProjectDetailPage({params}: ProjectPageProps) {
           </div>
 
           {project.techStack?.length ? (
-            <div className="mt-10 rounded-lg border border-black/10 bg-white p-5 shadow-sm">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-black/45">
+            <div className="mt-10 rounded-lg border border-brand-black/10 bg-brand-white p-5 shadow-sm">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-black/45">
                 Tech stack
               </h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.techStack.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-[--brand-red-light] px-3 py-1 text-xs font-semibold text-[--brand-red-dark]"
+                    className="rounded-full bg-brand-red-light px-3 py-1 text-xs font-semibold text-brand-red-dark"
                   >
                     {item}
                   </span>

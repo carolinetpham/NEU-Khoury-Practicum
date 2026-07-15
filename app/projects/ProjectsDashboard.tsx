@@ -51,8 +51,8 @@ function ProjectMedia({project}: {project: ProjectItem}) {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-white via-[--brand-red-light] to-slate-100">
-      <Server className="h-10 w-10 text-[--brand-red]/45" aria-hidden />
+    <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-brand-white via-brand-red-light to-slate-100">
+      <Server className="h-10 w-10 text-brand-red/45" aria-hidden />
     </div>
   )
 }
@@ -64,22 +64,22 @@ function ProjectCard({project}: {project: ProjectItem}) {
   return (
     <Link
       href={href}
-      className="group block overflow-hidden rounded-lg border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-[--brand-red]/35 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[--brand-red]"
+      className="group block overflow-hidden rounded-lg border border-brand-black/10 bg-brand-white shadow-sm transition hover:-translate-y-0.5 hover:border-brand-red/35 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-brand-red"
     >
-      <div className="aspect-16/7 overflow-hidden border-b border-black/10">
+      <div className="aspect-16/7 overflow-hidden border-b border-brand-black/10">
         <ProjectMedia project={project} />
       </div>
       <div className="p-5">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-[--brand-red]">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-red">
             {project.client}
           </p>
-          <h2 className="mt-2 text-xl font-semibold leading-tight text-[--brand-black]">
+          <h2 className="mt-2 text-xl font-semibold leading-tight text-brand-black">
             {project.title}
           </h2>
         </div>
 
-        <p className="mt-3 line-clamp-3 text-sm leading-6 text-black/65">
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-brand-black/65">
           {project.summary}
         </p>
 
@@ -87,15 +87,15 @@ function ProjectCard({project}: {project: ProjectItem}) {
           {techPreview.map((item) => (
             <span
               key={item}
-              className="rounded-full bg-[--brand-red-light] px-3 py-1 text-xs font-semibold text-[--brand-red-dark]"
+              className="rounded-full bg-brand-red-light px-3 py-1 text-xs font-semibold text-brand-red-dark"
             >
               {item}
             </span>
           ))}
         </div>
 
-        <div className="mt-5 flex items-center justify-end border-t border-black/10 pt-4">
-          <span className="inline-flex items-center gap-1 text-sm font-semibold text-[--brand-red] transition group-hover:text-[--brand-red-dark]">
+        <div className="mt-5 flex items-center justify-end border-t border-brand-black/10 pt-4">
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-red transition group-hover:text-brand-red-dark">
             View project
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </span>
@@ -111,23 +111,23 @@ function ProjectRow({project}: {project: ProjectItem}) {
   return (
     <Link
       href={href}
-      className="grid gap-4 rounded-lg border border-black/10 bg-white p-4 shadow-sm transition hover:border-[--brand-red]/35 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[--brand-red] sm:grid-cols-[10rem_1fr]"
+      className="grid gap-4 rounded-lg border border-brand-black/10 bg-brand-white p-4 shadow-sm transition hover:border-brand-red/35 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-brand-red sm:grid-cols-[10rem_1fr]"
     >
-      <div className="aspect-video overflow-hidden rounded-md border border-black/10 sm:aspect-auto">
+      <div className="aspect-video overflow-hidden rounded-md border border-brand-black/10 sm:aspect-auto">
         <ProjectMedia project={project} />
       </div>
       <div className="min-w-0">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-[--brand-red]">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-red">
             {project.client}
           </p>
-          <h2 className="mt-1 text-xl font-semibold text-[--brand-black]">
+          <h2 className="mt-1 text-xl font-semibold text-brand-black">
             {project.title}
           </h2>
         </div>
-        <p className="mt-2 text-sm leading-6 text-black/65">{project.summary}</p>
+        <p className="mt-2 text-sm leading-6 text-brand-black/65">{project.summary}</p>
         <div className="mt-4 flex justify-end">
-          <span className="inline-flex items-center gap-1 text-sm font-semibold text-[--brand-red]">
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-red">
             View project
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </span>
@@ -157,18 +157,18 @@ export default function ProjectsDashboard({projects}: ProjectsDashboardProps) {
         <label className="relative block w-full sm:max-w-md">
           <span className="sr-only">Search projects</span>
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-black/40"
+            className="pointer-events-none absolute left-3 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-brand-black/40"
             aria-hidden
           />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search projects"
-            className="h-11 w-full rounded-md border border-black/10 bg-white/85 pl-10 pr-4 text-sm text-[--brand-black] shadow-sm outline-none transition placeholder:text-black/40 focus:border-[--brand-red] focus:bg-white focus:ring-0"
+            className="h-11 w-full rounded-md border border-brand-black/10 bg-brand-white/85 pl-10 pr-4 text-sm text-brand-black shadow-sm outline-none transition placeholder:text-brand-black/40 focus:border-brand-red focus:bg-brand-white focus:ring-0"
           />
         </label>
 
-        <div className="inline-flex w-fit rounded-md border border-black/10 bg-white/75 p-1 shadow-sm backdrop-blur">
+        <div className="inline-flex w-fit rounded-md border border-brand-black/10 bg-brand-white/75 p-1 shadow-sm backdrop-blur">
           <button
             type="button"
             onClick={() => setView('cards')}
@@ -176,8 +176,8 @@ export default function ProjectsDashboard({projects}: ProjectsDashboardProps) {
             className={cn(
               'inline-flex h-9 items-center gap-2 rounded-sm px-3 text-sm font-semibold transition',
               view === 'cards'
-                ? 'bg-[#c8102e] text-white shadow-sm'
-                : 'text-black/55 hover:bg-white hover:text-[--brand-black]',
+                ? 'bg-brand-red text-brand-white shadow-sm'
+                : 'text-brand-black/55 hover:bg-brand-white hover:text-brand-black',
             )}
           >
             <Grid2X2 className="h-4 w-4" aria-hidden />
@@ -190,8 +190,8 @@ export default function ProjectsDashboard({projects}: ProjectsDashboardProps) {
             className={cn(
               'inline-flex h-9 items-center gap-2 rounded-sm px-3 text-sm font-semibold transition',
               view === 'list'
-                ? 'bg-[#c8102e] text-white shadow-sm'
-                : 'text-black/55 hover:bg-white hover:text-[--brand-black]',
+                ? 'bg-brand-red text-brand-white shadow-sm'
+                : 'text-brand-black/55 hover:bg-brand-white hover:text-brand-black',
             )}
           >
             <List className="h-4 w-4" aria-hidden />
@@ -217,11 +217,11 @@ export default function ProjectsDashboard({projects}: ProjectsDashboardProps) {
           )}
         </div>
       ) : (
-        <div className="mt-6 rounded-lg border border-dashed border-black/15 bg-white/70 px-5 py-12 text-center">
-          <p className="text-base font-semibold text-[--brand-black]">
+        <div className="mt-6 rounded-lg border border-dashed border-brand-black/15 bg-brand-white/70 px-5 py-12 text-center">
+          <p className="text-base font-semibold text-brand-black">
             No projects match your search.
           </p>
-          <p className="mt-2 text-sm text-black/55">
+          <p className="mt-2 text-sm text-brand-black/55">
             Try a project name, partner, or technology.
           </p>
         </div>

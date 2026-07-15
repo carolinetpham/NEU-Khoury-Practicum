@@ -110,7 +110,7 @@ function HeroPhoto({image}: {image?: AboutImage}) {
   }
 
   return (
-    <div className="w-full overflow-hidden bg-[--brand-white-soft]">
+    <div className="w-full overflow-hidden bg-brand-white-soft">
       <Image
         src="/images/inventory-system-group-photo.JPG"
         alt="Professional Practicum students presenting together"
@@ -145,10 +145,10 @@ export default async function AboutPage() {
   const logisticsIcons = [Users, Lightbulb, Handshake, Presentation]
 
   return (
-    <main className="page-enter -mt-16 min-h-screen bg-white">
-      <section className="bg-white pt-28 sm:pt-32">
+    <main className="page-enter -mt-16 min-h-screen bg-brand-white">
+      <section className="bg-brand-white pt-28 sm:pt-32">
         <div className="mx-auto w-full max-w-6xl px-5 pb-14 sm:px-6 sm:pb-16">
-          <div className="rise-in mb-10 overflow-hidden rounded-2xl bg-[--brand-white-soft] sm:mb-12">
+          <div className="rise-in mb-10 overflow-hidden rounded-2xl bg-brand-white-soft sm:mb-12">
             <HeroPhoto image={about.heroImage} />
           </div>
 
@@ -162,13 +162,13 @@ export default async function AboutPage() {
               </h1>
             </div>
             <div>
-              <p className="rise-in rise-in-delay-2 max-w-xl text-lg leading-8 text-black/70">
+              <p className="rise-in rise-in-delay-2 max-w-xl text-lg leading-8 text-brand-black/70">
                 {about.introduction}
               </p>
               <div className="rise-in rise-in-delay-3 mt-6 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/projects"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-[#c8102e] bg-[#c8102e] px-5 text-sm font-semibold text-white transition hover:border-[#8f0c22] hover:bg-[#8f0c22] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-brand-red bg-brand-red px-5 text-sm font-semibold text-brand-white transition hover:border-brand-red-dark hover:bg-brand-red-dark focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-brand-red"
                 >
                   Explore projects
                   <ArrowRight className="h-4 w-4" aria-hidden />
@@ -179,7 +179,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="essentials-heading" className="bg-[#fff7f8]">
+      <section aria-labelledby="essentials-heading" className="bg-brand-red-wash">
         <div className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-6 sm:py-16">
           <div className="grid gap-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
             <div>
@@ -193,7 +193,7 @@ export default async function AboutPage() {
                 At a glance
               </h2>
             </div>
-            <p className="max-w-xl text-base leading-7 text-black/60 lg:justify-self-end">
+            <p className="max-w-xl text-base leading-7 text-brand-black/60 lg:justify-self-end">
               A credit-bearing semester built around real client work, close
               collaboration, and a professional final handoff.
             </p>
@@ -203,17 +203,17 @@ export default async function AboutPage() {
               const Icon = logisticsIcons[index]
 
               return (
-                <article key={item.label} className="rounded-xl bg-white p-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[--brand-red] text-white">
+                <article key={item.label} className="rounded-xl bg-brand-white p-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-red text-brand-white">
                     <Icon className="h-5 w-5" aria-hidden />
                   </div>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-black/45">
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-brand-black/45">
                     {item.label}
                   </p>
                   <h3 className="mt-2 text-xl font-semibold leading-snug text-brand-black">
                     {item.value}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-black/60">
+                  <p className="mt-3 text-sm leading-6 text-brand-black/60">
                     {item.body}
                   </p>
                 </article>
@@ -223,7 +223,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="overview-heading" className="bg-white">
+      <section aria-labelledby="overview-heading" className="bg-brand-white">
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-14 sm:px-6 sm:py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-brand-red">
@@ -243,11 +243,11 @@ export default async function AboutPage() {
               students take ownership of the decisions, communication, and
               delivery.
             </p>
-            <div className="mt-8 border-t border-black/10 pt-5">
-              <p className="text-sm font-semibold uppercase tracking-wide text-black/45">
+            <div className="mt-8 border-t border-brand-black/10 pt-5">
+              <p className="text-sm font-semibold uppercase tracking-wide text-brand-black/45">
                 Available to Khoury students
               </p>
-              <p className="mt-2 text-base leading-7 text-black/65">
+              <p className="mt-2 text-base leading-7 text-brand-black/65">
                 Boston, Oakland, and Miami campuses
               </p>
             </div>
@@ -255,7 +255,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="gallery-heading" className="bg-[#fff7f8]">
+      <section aria-labelledby="gallery-heading" className="bg-brand-red-wash">
         <div className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-brand-red">
@@ -288,9 +288,9 @@ export default async function AboutPage() {
           </div>
         </div>
       </section>
-      <section aria-labelledby="experience-heading" className="bg-[--brand-white-soft]">
+      <section aria-labelledby="experience-heading" className="bg-brand-white">
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-14 sm:px-6 sm:py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-12">
-          <div className="overflow-hidden rounded-2xl bg-[--brand-red-light]">
+          <div className="overflow-hidden rounded-2xl bg-brand-white">
             <Image
               src="/images/students-working.jpeg"
               alt="Students collaborating during a practicum work session"
@@ -314,9 +314,9 @@ export default async function AboutPage() {
               {about.benefits.map((benefit) => (
                 <li
                   key={benefit}
-                  className="flex gap-3 text-base leading-7 text-black/70"
+                  className="flex gap-3 text-base leading-7 text-brand-black/70"
                 >
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[--brand-red-light] text-[--brand-red]">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red-light text-brand-red">
                     <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
                   </span>
                   <span>{benefit}</span>
@@ -327,7 +327,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="partners-heading" className="overflow-hidden bg-[#fff7f8]">
+      <section aria-labelledby="partners-heading" className="overflow-hidden bg-brand-red-wash">
         <div className="mx-auto w-full max-w-6xl px-5 pt-14 sm:px-6 sm:pt-16">
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-red">
             Industry connection
@@ -338,7 +338,7 @@ export default async function AboutPage() {
           >
             Built with real partners.
           </h2>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-black/60">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-brand-black/60">
             Students learn to listen, communicate, and deliver alongside
             organizations with real needs.
           </p>
@@ -356,7 +356,7 @@ export default async function AboutPage() {
                 {about.partners.map((partner) => (
                   <li
                     key={partner}
-                    className="flex items-center gap-6 whitespace-nowrap text-sm font-semibold text-black/65"
+                    className="flex items-center gap-6 whitespace-nowrap text-sm font-semibold text-brand-black/65"
                   >
                     <span>{partner}</span>
                     <span className="text-brand-red/45" aria-hidden>
@@ -370,9 +370,9 @@ export default async function AboutPage() {
         </div>
 
         <div className="mx-auto w-full max-w-6xl px-5 pb-14 sm:px-6 sm:pb-16">
-          <blockquote className="ml-auto mt-9 max-w-xl border-l-2 border-brand-red/30 pl-5 text-base leading-7 text-black/70 sm:pl-6">
+          <blockquote className="ml-auto mt-9 max-w-xl border-l-2 border-brand-red/30 pl-5 text-base leading-7 text-brand-black/70 sm:pl-6">
             <p>&ldquo;{about.testimonial}&rdquo;</p>
-            <footer className="mt-3 text-xs font-semibold uppercase tracking-wide text-black/45">
+            <footer className="mt-3 text-xs font-semibold uppercase tracking-wide text-brand-black/45">
               Practicum student
             </footer>
           </blockquote>

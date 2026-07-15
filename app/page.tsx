@@ -61,7 +61,7 @@ export default async function Home() {
       id="home-page"
       className="-mt-16 flex flex-1 flex-col overflow-hidden page-enter"
     >
-      <section className="relative isolate flex min-h-screen w-full items-center bg-[--brand-white] pb-20 pt-36 sm:pb-24 sm:pt-40">
+      <section className="relative isolate flex min-h-screen w-full items-center bg-brand-white pb-20 pt-36 sm:pb-24 sm:pt-40">
         <div
           aria-hidden
           className="gradient-enter absolute inset-0 -z-20 bg-[radial-gradient(circle_at_15%_8%,rgba(200,16,46,0.16),transparent_34%),radial-gradient(circle_at_88%_22%,rgba(219,234,254,0.62),transparent_30%),linear-gradient(135deg,rgba(255,255,255,1)_0%,rgba(255,247,248,1)_46%,rgba(248,250,252,1)_100%)]"
@@ -72,7 +72,7 @@ export default async function Home() {
         />
         <div
           aria-hidden
-          className="absolute inset-x-0 bottom-0 -z-10 h-44 bg-linear-to-t from-[--brand-red-light] to-transparent"
+          className="absolute inset-x-0 bottom-0 -z-10 h-44 bg-linear-to-t from-brand-red-light to-transparent"
         />
 
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -94,8 +94,8 @@ export default async function Home() {
                     href={cta.href || '/'}
                     className={
                       isPrimary
-                        ? 'inline-flex h-12 items-center justify-center gap-2 rounded-md border border-[#c8102e] bg-[#c8102e] px-5 text-sm font-semibold text-white transition hover:border-[#8f0c22] hover:bg-[#8f0c22] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]'
-                        : 'inline-flex h-12 items-center justify-center gap-2 rounded-md border border-black/20 bg-white/80 px-5 text-sm font-semibold text-[#000000] transition hover:border-[#c8102e]/40 hover:bg-[#fbe6e9] focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#c8102e]'
+                        ? 'inline-flex h-12 items-center justify-center gap-2 rounded-md border border-brand-red bg-brand-red px-5 text-sm font-semibold text-brand-white transition hover:border-brand-red-dark hover:bg-brand-red-dark focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-brand-red'
+                        : 'inline-flex h-12 items-center justify-center gap-2 rounded-md border border-brand-black/20 bg-brand-white/80 px-5 text-sm font-semibold text-brand-black transition hover:border-brand-red/40 hover:bg-brand-red-light focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-brand-red'
                     }
                   >
                     {getCtaIcon(cta.audience)}
