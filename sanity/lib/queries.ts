@@ -15,8 +15,10 @@ export const HOME_PAGE_QUERY = defineQuery(/* groq */ `
 
 export const ABOUT_PAGE_QUERY = defineQuery(/* groq */ `
   *[_id == "aboutPage"][0] {
+    heroLabel,
     eyebrow,
     introduction,
+    heroCtaLabel,
     heroImage {
       asset-> {
         _id,
@@ -26,11 +28,61 @@ export const ABOUT_PAGE_QUERY = defineQuery(/* groq */ `
           dimensions
         }
       },
-      alt
+      alt,
+      crop,
+      hotspot
     },
-    partners,
+    essentialsLabel,
+    essentialsTitle,
+    essentialsItems[] {
+      _key,
+      label,
+      value,
+      body
+    },
+    modelLabel,
+    modelTitle,
+    modelBody,
+    availabilityLabel,
+    availabilityText,
+    galleryLabel,
+    galleryTitle,
+    galleryImages[] {
+      _key,
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions
+        }
+      },
+      alt,
+      crop,
+      hotspot
+    },
+    experienceImage {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions
+        }
+      },
+      alt,
+      crop,
+      hotspot
+    },
+    experienceLabel,
+    experienceTitle,
     benefits,
-    testimonial
+    partnersLabel,
+    partnersTitle,
+    partnersIntroduction,
+    partners,
+    testimonial,
+    testimonialAttribution
   }
 `)
 
