@@ -13,6 +13,79 @@ export const HOME_PAGE_QUERY = defineQuery(/* groq */ `
   }
 `)
 
+export const ABOUT_PAGE_QUERY = defineQuery(/* groq */ `
+  *[_id == "aboutPage"][0] {
+    heroLabel,
+    eyebrow,
+    introduction,
+    heroCtaLabel,
+    heroImage {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions
+        }
+      },
+      alt,
+      crop,
+      hotspot
+    },
+    essentialsLabel,
+    essentialsTitle,
+    essentialsItems[] {
+      _key,
+      label,
+      value,
+      body
+    },
+    modelLabel,
+    modelTitle,
+    modelBody,
+    availabilityLabel,
+    availabilityText,
+    galleryLabel,
+    galleryTitle,
+    galleryImages[] {
+      _key,
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions
+        }
+      },
+      alt,
+      crop,
+      hotspot
+    },
+    experienceImage {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions
+        }
+      },
+      alt,
+      crop,
+      hotspot
+    },
+    experienceLabel,
+    experienceTitle,
+    benefits,
+    partnersLabel,
+    partnersTitle,
+    partnersIntroduction,
+    partners,
+    testimonial,
+    testimonialAttribution
+  }
+`)
+
 export const PROJECTS_QUERY = defineQuery(/* groq */ `
   *[_type == "project"] | order(displayOrder asc, title asc) {
     _id,

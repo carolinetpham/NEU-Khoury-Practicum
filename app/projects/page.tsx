@@ -9,7 +9,7 @@ export default async function ProjectsPage() {
   const projects = sanityProjects || []
 
   return (
-    <main className="page-enter -mt-16 min-h-screen bg-[--brand-white]">
+    <main className="page-enter -mt-16 min-h-screen bg-brand-white">
       <section className="pb-20 pt-36 sm:pt-40">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
           <p className="rise-in text-sm font-semibold uppercase tracking-wide text-brand-red">
