@@ -1,26 +1,8 @@
 import Link from 'next/link'
 import {ArrowRight, BriefcaseBusiness, GraduationCap} from 'lucide-react'
 
-import {sanityFetch} from '@/sanity/lib/live'
-import {HOME_PAGE_QUERY} from '@/sanity/lib/queries'
-import type {HomeCallToAction, HomePageData} from './types'
-
-const fallbackHome: Required<HomePageData> = {
-  title: 'Khoury Software Practicum',
-  subtitle: 'Develop for industry partners',
-  callsToAction: [
-    {
-      label: 'For students',
-      href: '/students',
-      audience: 'students',
-    },
-    {
-      label: 'For clients',
-      href: '/clients',
-      audience: 'clients',
-    },
-  ],
-}
+import {getHomePage} from './data'
+import type {HomeCallToAction} from './types'
 
 const getCtaIcon = (audience?: HomeCallToAction['audience']) => {
   if (audience === 'clients') {
@@ -31,18 +13,7 @@ const getCtaIcon = (audience?: HomeCallToAction['audience']) => {
 }
 
 export default async function Home() {
-  const {data} = await sanityFetch({query: HOME_PAGE_QUERY})
-  const sanityHome = data as HomePageData | null
-  const home = {
-    title: sanityHome?.title?.trim() || fallbackHome.title,
-    subtitle: sanityHome?.subtitle?.trim() || fallbackHome.subtitle,
-    callsToAction: sanityHome?.callsToAction?.length
-      ? sanityHome.callsToAction
-      : fallbackHome.callsToAction,
-  }
-  const callsToAction = home.callsToAction?.length
-    ? home.callsToAction
-    : fallbackHome.callsToAction
+  const home = await getHomePage()
 
   return (
     <main
@@ -73,7 +44,7 @@ export default async function Home() {
             </h2>
 
             <div className="rise-in rise-in-delay-2 mt-8 flex flex-col gap-3 sm:flex-row">
-              {callsToAction.map((cta, index) => {
+              {home.callsToAction.map((cta, index) => {
                 const isPrimary = index === 0
 
                 return (
