@@ -11,83 +11,9 @@ import {
   Users,
 } from 'lucide-react'
 
-import {sanityFetch} from '@/sanity/lib/live'
 import {urlFor} from '@/sanity/lib/image'
-import {ABOUT_PAGE_QUERY} from '@/sanity/lib/queries'
-import type {
-  AboutEditableImageProps,
-  AboutPageData,
-} from './types'
-
-const fallbackAbout = {
-  heroLabel: 'About',
-  eyebrow: 'Professional Practicum at Khoury College',
-  introduction:
-    'Professional Practicum blends rigorous coursework with faculty and client mentorship so students can solve real-world problems in a professional setting.',
-  heroCtaLabel: 'Explore projects',
-  essentialsLabel: 'Practicum',
-  essentialsTitle: 'At a glance',
-  essentialsItems: [
-    {
-      _key: 'team-format',
-      label: 'Team format',
-      value: 'Cohorts of 5-6',
-      body: 'Students work in small teams with enough ownership to practice real collaboration.',
-    },
-    {
-      _key: 'project-source',
-      label: 'Project source',
-      value: 'Client-sourced',
-      body: 'Each project starts from an open-ended need brought by a partner or community organization.',
-    },
-    {
-      _key: 'mentorship',
-      label: 'Mentorship',
-      value: 'Faculty + client guidance',
-      body: 'Students receive course mentorship while also learning how to respond to client feedback.',
-    },
-    {
-      _key: 'final-outcome',
-      label: 'Final outcome',
-      value: 'Presentation and handoff',
-      body: 'The semester ends with formal presentations, documentation, and next steps for partners.',
-    },
-  ],
-  modelLabel: 'The practicum model',
-  modelTitle: 'Course structure. Real-world stakes.',
-  modelBody:
-    'The practicum sits between a traditional course and a professional engagement. Faculty provide the structure to learn; students take ownership of the decisions, communication, and delivery.',
-  availabilityLabel: 'Available to Khoury students',
-  availabilityText: 'Boston, Oakland, and Miami campuses',
-  galleryLabel: 'Practicum in action',
-  galleryTitle: 'Real teams. Real presentations.',
-  experienceLabel: 'What students gain',
-  experienceTitle: 'Technical growth meets professional experience.',
-  benefits: [
-    'Solve real problems sourced directly from industry partners',
-    'Develop technical and professional communication skills in tandem',
-    'Work directly with faculty mentors and build client relationships throughout the project',
-    'Collaborate within a small team of approximately five to six students',
-    'Build your resume with a credit-bearing experience that goes beyond the classroom',
-    'Satisfy NUpath Capstone Experience, Integration Experience, and Writing Intensive requirements (Boston only)',
-  ],
-  partnersLabel: 'Industry connection',
-  partnersTitle: 'Built with real partners.',
-  partnersIntroduction:
-    'Students learn to listen, communicate, and deliver alongside organizations with real needs.',
-  partners: [
-    'Massachusetts National Guard',
-    "Boston Children's Hospital",
-    'Oakridge Labs',
-    'Society for the Study of Affect',
-    'Northeastern University',
-    'Pawtograder',
-    'KidzHack',
-  ],
-  testimonial:
-    'This class gave me an incredibly valuable preview of industry work after graduation. It felt less like a traditional computer science course and more like working at a client-facing business agency.',
-  testimonialAttribution: 'Practicum student',
-}
+import {getAboutPage} from './data'
+import type {AboutEditableImageProps} from './types'
 
 const fallbackGalleryImages = [
   {
@@ -143,60 +69,7 @@ function EditableImage({
 }
 
 export default async function AboutPage() {
-  const {data} = await sanityFetch({query: ABOUT_PAGE_QUERY})
-  const sanityAbout = data as AboutPageData | null
-  const about = {
-    heroLabel: sanityAbout?.heroLabel?.trim() || fallbackAbout.heroLabel,
-    eyebrow: sanityAbout?.eyebrow?.trim() || fallbackAbout.eyebrow,
-    introduction:
-      sanityAbout?.introduction?.trim() || fallbackAbout.introduction,
-    heroCtaLabel:
-      sanityAbout?.heroCtaLabel?.trim() || fallbackAbout.heroCtaLabel,
-    heroImage: sanityAbout?.heroImage,
-    essentialsLabel:
-      sanityAbout?.essentialsLabel?.trim() || fallbackAbout.essentialsLabel,
-    essentialsTitle:
-      sanityAbout?.essentialsTitle?.trim() || fallbackAbout.essentialsTitle,
-    essentialsItems: sanityAbout?.essentialsItems?.length
-      ? sanityAbout.essentialsItems
-      : fallbackAbout.essentialsItems,
-    modelLabel: sanityAbout?.modelLabel?.trim() || fallbackAbout.modelLabel,
-    modelTitle: sanityAbout?.modelTitle?.trim() || fallbackAbout.modelTitle,
-    modelBody: sanityAbout?.modelBody?.trim() || fallbackAbout.modelBody,
-    availabilityLabel:
-      sanityAbout?.availabilityLabel?.trim() ||
-      fallbackAbout.availabilityLabel,
-    availabilityText:
-      sanityAbout?.availabilityText?.trim() || fallbackAbout.availabilityText,
-    galleryLabel:
-      sanityAbout?.galleryLabel?.trim() || fallbackAbout.galleryLabel,
-    galleryTitle:
-      sanityAbout?.galleryTitle?.trim() || fallbackAbout.galleryTitle,
-    galleryImages: sanityAbout?.galleryImages,
-    experienceImage: sanityAbout?.experienceImage,
-    experienceLabel:
-      sanityAbout?.experienceLabel?.trim() || fallbackAbout.experienceLabel,
-    experienceTitle:
-      sanityAbout?.experienceTitle?.trim() || fallbackAbout.experienceTitle,
-    partners: sanityAbout?.partners?.length
-      ? sanityAbout.partners
-      : fallbackAbout.partners,
-    benefits: sanityAbout?.benefits?.length
-      ? sanityAbout.benefits
-      : fallbackAbout.benefits,
-    partnersLabel:
-      sanityAbout?.partnersLabel?.trim() || fallbackAbout.partnersLabel,
-    partnersTitle:
-      sanityAbout?.partnersTitle?.trim() || fallbackAbout.partnersTitle,
-    partnersIntroduction:
-      sanityAbout?.partnersIntroduction?.trim() ||
-      fallbackAbout.partnersIntroduction,
-    testimonial:
-      sanityAbout?.testimonial?.trim() || fallbackAbout.testimonial,
-    testimonialAttribution:
-      sanityAbout?.testimonialAttribution?.trim() ||
-      fallbackAbout.testimonialAttribution,
-  }
+  const about = await getAboutPage()
 
   const logisticsIcons = [Users, Lightbulb, Handshake, Presentation]
   const galleryItems = about.galleryImages?.length

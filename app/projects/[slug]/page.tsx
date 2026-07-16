@@ -2,17 +2,11 @@ import Link from 'next/link'
 import {notFound} from 'next/navigation'
 import {ArrowLeft, ArrowUpRight, Code2, Server} from 'lucide-react'
 
-import {sanityFetch} from '@/sanity/lib/live'
-import {
-  PROJECT_BY_SLUG_QUERY,
-  PROJECT_SLUGS_QUERY,
-} from '@/sanity/lib/queries'
+import {getProjectBySlug, getProjectSlugs} from '../data'
 import type {
   ProjectDetailBlockProps,
-  ProjectItem,
   ProjectPageProps,
   ProjectProps,
-  ProjectSlug,
 } from '../types'
 
 function ProjectHeroMedia({project}: ProjectProps) {
@@ -55,9 +49,7 @@ function DetailBlock({
 }
 
 export async function generateStaticParams() {
-  const {data} = await sanityFetch({query: PROJECT_SLUGS_QUERY})
-  const sanitySlugs = data as ProjectSlug[] | null
-  const slugs = sanitySlugs || []
+  const slugs = await getProjectSlugs()
 
   return slugs
     .filter((project): project is {slug: string} => Boolean(project.slug))
@@ -66,12 +58,7 @@ export async function generateStaticParams() {
 
 export default async function ProjectDetailPage({params}: ProjectPageProps) {
   const {slug} = await params
-  const {data} = await sanityFetch({
-    query: PROJECT_BY_SLUG_QUERY,
-    params: {slug},
-  })
-  const sanityProject = data as ProjectItem | null
-  const project = sanityProject
+  const project = await getProjectBySlug(slug)
 
   if (!project) {
     notFound()

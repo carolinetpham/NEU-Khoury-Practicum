@@ -1,12 +1,8 @@
 import ProjectsDashboard from './ProjectsDashboard'
-import type {ProjectItem} from './types'
-import {sanityFetch} from '@/sanity/lib/live'
-import {PROJECTS_QUERY} from '@/sanity/lib/queries'
+import {getProjects} from './data'
 
 export default async function ProjectsPage() {
-  const {data} = await sanityFetch({query: PROJECTS_QUERY})
-  const sanityProjects = data as ProjectItem[] | null
-  const projects = sanityProjects || []
+  const projects = await getProjects()
 
   return (
     <main className="page-enter -mt-16 min-h-screen bg-brand-white">
