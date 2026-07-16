@@ -17,60 +17,11 @@ import {
 import {urlFor} from '@/sanity/lib/image'
 import {sanityFetch} from '@/sanity/lib/live'
 import {STUDENTS_PAGE_QUERY} from '@/sanity/lib/queries'
-
-type StudentsImage = {
-  asset?: {
-    _id?: string
-    metadata?: {lqip?: string}
-  }
-  alt?: string
-  crop?: unknown
-  hotspot?: unknown
-}
-
-type LabeledItem = {
-  _key?: string
-  label?: string
-  value?: string
-  title?: string
-  body?: string
-}
-
-type StudentsPageData = {
-  seoTitle?: string
-  seoDescription?: string
-  heroLabel?: string
-  heroTitle?: string
-  heroIntroduction?: string
-  heroCtaLabel?: string
-  heroCtaUrl?: string
-  heroImage?: StudentsImage
-  factsLabel?: string
-  factsTitle?: string
-  facts?: LabeledItem[]
-  journeyLabel?: string
-  journeyTitle?: string
-  journeyIntroduction?: string
-  journeyStages?: LabeledItem[]
-  expectationsLabel?: string
-  expectationsTitle?: string
-  expectationsIntroduction?: string
-  expectations?: LabeledItem[]
-  assessmentLabel?: string
-  assessmentTitle?: string
-  assessmentIntroduction?: string
-  groupAssessmentTitle?: string
-  groupAssessmentPercentage?: string
-  groupAssessmentBody?: string
-  individualAssessmentTitle?: string
-  individualAssessmentPercentage?: string
-  individualAssessmentBody?: string
-  closingLabel?: string
-  closingTitle?: string
-  closingBody?: string
-  closingCtaLabel?: string
-  closingCtaUrl?: string
-}
+import type {
+  ApplicationLinkProps,
+  StudentsEditableImageProps,
+  StudentsPageData,
+} from './types'
 
 const fallbackStudents = {
   seoTitle: 'For Students | Industry Practicum',
@@ -244,16 +195,7 @@ function EditableImage({
   sizes,
   className,
   priority = false,
-}: {
-  image?: StudentsImage
-  fallbackSrc: string
-  fallbackAlt: string
-  width: number
-  height: number
-  sizes: string
-  className: string
-  priority?: boolean
-}) {
+}: StudentsEditableImageProps) {
   const hasSanityImage = Boolean(image?.asset?._id)
   const lqip = image?.asset?.metadata?.lqip
   const src = hasSanityImage
@@ -280,7 +222,7 @@ function EditableImage({
   )
 }
 
-function ApplicationLink({href, label, inverted = false}: {href: string; label: string; inverted?: boolean}) {
+function ApplicationLink({href, label, inverted = false}: ApplicationLinkProps) {
   return (
     <a
       href={href}
@@ -288,8 +230,8 @@ function ApplicationLink({href, label, inverted = false}: {href: string; label: 
       rel="noreferrer"
       className={
         inverted
-          ? 'inline-flex h-13 items-center justify-center gap-2 rounded-md bg-brand-white px-6 text-sm font-semibold text-brand-red transition hover:bg-brand-red-wash focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-white'
-          : 'inline-flex h-13 items-center justify-center gap-2 rounded-md bg-brand-red px-6 text-sm font-semibold text-brand-white transition hover:bg-brand-red-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red'
+          ? 'inline-flex h-13 items-center justify-center gap-2 rounded-md bg-brand-white px-6 text-sm font-semibold text-brand-red transition hover:bg-brand-red-wash focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-brand-white'
+          : 'inline-flex h-13 items-center justify-center gap-2 rounded-md bg-brand-red px-6 text-sm font-semibold text-brand-white transition hover:bg-brand-red-dark focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-brand-red'
       }
     >
       {label}
