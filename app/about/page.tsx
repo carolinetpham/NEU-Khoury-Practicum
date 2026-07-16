@@ -14,60 +14,10 @@ import {
 import {sanityFetch} from '@/sanity/lib/live'
 import {urlFor} from '@/sanity/lib/image'
 import {ABOUT_PAGE_QUERY} from '@/sanity/lib/queries'
-
-type AboutImage = {
-  _key?: string
-  asset?: {
-    _id?: string
-    url?: string
-    metadata?: {
-      lqip?: string
-      dimensions?: {
-        width?: number
-        height?: number
-      }
-    }
-  }
-  alt?: string
-  crop?: unknown
-  hotspot?: unknown
-}
-
-type EssentialItem = {
-  _key?: string
-  label?: string
-  value?: string
-  body?: string
-}
-
-type AboutPageData = {
-  heroLabel?: string
-  eyebrow?: string
-  introduction?: string
-  heroCtaLabel?: string
-  heroImage?: AboutImage
-  essentialsLabel?: string
-  essentialsTitle?: string
-  essentialsItems?: EssentialItem[]
-  modelLabel?: string
-  modelTitle?: string
-  modelBody?: string
-  availabilityLabel?: string
-  availabilityText?: string
-  galleryLabel?: string
-  galleryTitle?: string
-  galleryImages?: AboutImage[]
-  experienceImage?: AboutImage
-  experienceLabel?: string
-  experienceTitle?: string
-  benefits?: string[]
-  partnersLabel?: string
-  partnersTitle?: string
-  partnersIntroduction?: string
-  partners?: string[]
-  testimonial?: string
-  testimonialAttribution?: string
-}
+import type {
+  AboutEditableImageProps,
+  AboutPageData,
+} from './types'
 
 const fallbackAbout = {
   heroLabel: 'About',
@@ -165,16 +115,7 @@ function EditableImage({
   sizes,
   className,
   priority = false,
-}: {
-  image?: AboutImage
-  fallbackSrc: string
-  fallbackAlt: string
-  width: number
-  height: number
-  sizes: string
-  className: string
-  priority?: boolean
-}) {
+}: AboutEditableImageProps) {
   const hasSanityImage = Boolean(image?.asset?._id)
   const lqip = image?.asset?.metadata?.lqip
   const src = hasSanityImage

@@ -11,11 +11,11 @@ import {
 } from 'lucide-react'
 
 import {cn} from '@/lib/utils'
-import type {ProjectItem} from './types'
-
-type ProjectsDashboardProps = {
-  projects: ProjectItem[]
-}
+import type {
+  ProjectItem,
+  ProjectProps,
+  ProjectsDashboardProps,
+} from './types'
 
 const normalize = (value: string) => value.trim().toLowerCase()
 
@@ -32,7 +32,7 @@ const getSearchText = (project: ProjectItem) =>
     .join(' ')
     .toLowerCase()
 
-function ProjectMedia({project}: {project: ProjectItem}) {
+function ProjectMedia({project}: ProjectProps) {
   const imageUrl = project.featuredImage?.asset?.url
 
   if (imageUrl) {
@@ -57,7 +57,7 @@ function ProjectMedia({project}: {project: ProjectItem}) {
   )
 }
 
-function ProjectCard({project}: {project: ProjectItem}) {
+function ProjectCard({project}: ProjectProps) {
   const techPreview = project.techStack?.slice(0, 4) || []
   const href = project.slug ? `/projects/${project.slug}` : '/projects'
 
@@ -105,7 +105,7 @@ function ProjectCard({project}: {project: ProjectItem}) {
   )
 }
 
-function ProjectRow({project}: {project: ProjectItem}) {
+function ProjectRow({project}: ProjectProps) {
   const href = project.slug ? `/projects/${project.slug}` : '/projects'
 
   return (

@@ -3,19 +3,7 @@ import {ArrowRight, BriefcaseBusiness, GraduationCap} from 'lucide-react'
 
 import {sanityFetch} from '@/sanity/lib/live'
 import {HOME_PAGE_QUERY} from '@/sanity/lib/queries'
-
-type HomeCallToAction = {
-  _key?: string
-  label?: string
-  href?: string
-  audience?: 'students' | 'clients' | 'general'
-}
-
-type HomePageData = {
-  title?: string
-  subtitle?: string
-  callsToAction?: HomeCallToAction[]
-}
+import type {HomeCallToAction, HomePageData} from './types'
 
 const fallbackHome: Required<HomePageData> = {
   title: 'Khoury Software Practicum',

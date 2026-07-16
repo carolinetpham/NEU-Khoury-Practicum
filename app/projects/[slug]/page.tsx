@@ -7,15 +7,15 @@ import {
   PROJECT_BY_SLUG_QUERY,
   PROJECT_SLUGS_QUERY,
 } from '@/sanity/lib/queries'
-import type {ProjectItem} from '../types'
+import type {
+  ProjectDetailBlockProps,
+  ProjectItem,
+  ProjectPageProps,
+  ProjectProps,
+  ProjectSlug,
+} from '../types'
 
-type ProjectPageProps = {
-  params: Promise<{
-    slug: string
-  }>
-}
-
-function ProjectHeroMedia({project}: {project: ProjectItem}) {
+function ProjectHeroMedia({project}: ProjectProps) {
   const imageUrl = project.featuredImage?.asset?.url
 
   if (imageUrl) {
@@ -39,10 +39,7 @@ function ProjectHeroMedia({project}: {project: ProjectItem}) {
 function DetailBlock({
   heading,
   body,
-}: {
-  heading: string
-  body?: string
-}) {
+}: ProjectDetailBlockProps) {
   if (!body) {
     return null
   }
@@ -59,7 +56,7 @@ function DetailBlock({
 
 export async function generateStaticParams() {
   const {data} = await sanityFetch({query: PROJECT_SLUGS_QUERY})
-  const sanitySlugs = data as {slug?: string}[] | null
+  const sanitySlugs = data as ProjectSlug[] | null
   const slugs = sanitySlugs || []
 
   return slugs

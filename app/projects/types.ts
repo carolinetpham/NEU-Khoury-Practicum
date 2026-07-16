@@ -36,3 +36,26 @@ export type ProjectItem = {
   outcome?: string
   detailSections?: ProjectDetailSection[]
 }
+
+export type ProjectProps = {
+  project: ProjectItem
+}
+
+export type ProjectsDashboardProps = {
+  projects: ProjectItem[]
+}
+
+export type ProjectPageProps = {
+  params: Promise<{
+    slug: string
+  }>
+}
+
+export type ProjectDetailBlockProps = {
+  heading: string
+  body?: string
+}
+
+export type ProjectSlug = {
+  slug?: string
+}
