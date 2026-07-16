@@ -86,6 +86,53 @@ export const ABOUT_PAGE_QUERY = defineQuery(/* groq */ `
   }
 `)
 
+export const STUDENTS_PAGE_QUERY = defineQuery(/* groq */ `
+  *[_id == "studentsPage"][0] {
+    seoTitle,
+    seoDescription,
+    heroLabel,
+    heroTitle,
+    heroIntroduction,
+    heroCtaLabel,
+    heroCtaUrl,
+    heroImage {
+      asset-> {
+        _id,
+        url,
+        metadata {lqip, dimensions}
+      },
+      alt,
+      crop,
+      hotspot
+    },
+    factsLabel,
+    factsTitle,
+    facts[] {_key, label, value, body},
+    journeyLabel,
+    journeyTitle,
+    journeyIntroduction,
+    journeyStages[] {_key, title, body},
+    expectationsLabel,
+    expectationsTitle,
+    expectationsIntroduction,
+    expectations[] {_key, title, body},
+    assessmentLabel,
+    assessmentTitle,
+    assessmentIntroduction,
+    groupAssessmentTitle,
+    groupAssessmentPercentage,
+    groupAssessmentBody,
+    individualAssessmentTitle,
+    individualAssessmentPercentage,
+    individualAssessmentBody,
+    closingLabel,
+    closingTitle,
+    closingBody,
+    closingCtaLabel,
+    closingCtaUrl
+  }
+`)
+
 export const PROJECTS_QUERY = defineQuery(/* groq */ `
   *[_type == "project"] | order(displayOrder asc, title asc) {
     _id,

@@ -1,7 +1,7 @@
 import {DocumentIcon} from '@sanity/icons'
 import type {StructureResolver} from 'sanity/structure'
 
-const singletonTypes = ['homePage', 'aboutPage']
+const singletonTypes = ['homePage', 'aboutPage', 'studentsPage']
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -25,6 +25,15 @@ export const structure: StructureResolver = (S) =>
             .schemaType('aboutPage')
             .documentId('aboutPage')
             .title('About Page'),
+        ),
+      S.listItem()
+        .title('Students Page')
+        .icon(DocumentIcon)
+        .child(
+          S.document()
+            .schemaType('studentsPage')
+            .documentId('studentsPage')
+            .title('Students Page'),
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
