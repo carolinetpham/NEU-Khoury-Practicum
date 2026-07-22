@@ -1,6 +1,10 @@
 import ProjectsDashboard from './ProjectsDashboard'
 import {getProjects} from './data'
 
+// Project documents are maintained in Sanity and should be visible immediately
+// after an editor publishes a change.
+export const dynamic = 'force-dynamic'
+
 export default async function ProjectsPage() {
   const projects = await getProjects()
 

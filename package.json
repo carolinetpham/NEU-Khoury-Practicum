@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed:projects": "node scripts/seed-projects.mjs",
+    "seed:projects": "sanity exec scripts/seed-projects.mjs --with-user-token",
     "lint": "eslint"
   },
   "dependencies": {
