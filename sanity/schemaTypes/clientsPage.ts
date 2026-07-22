@@ -13,7 +13,7 @@ const defaultClientsPage = {
   seoDescription:
     'Partner with Northeastern students on a faculty-scoped software, data, or AI project and receive a high-quality MVP or proof of concept.',
   heroLabel: 'For industry partners',
-  heroTitle: 'Bring us a real problem. Build toward a practical solution.',
+  heroTitle: 'Bring a real challenge.',
   heroIntroduction:
     'Partner with Northeastern University on a faculty-scoped software, data, or AI project. A select student team will spend a full semester discovering, designing, and developing a high-quality MVP or proof of concept for your organization.',
   heroCtaLabel: 'Email us!',

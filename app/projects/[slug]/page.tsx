@@ -24,7 +24,7 @@ function ProjectHeroMedia({project}: ProjectProps) {
   }
 
   return (
-    <div className="flex min-h-64 items-center justify-center rounded-lg border border-brand-black/10 bg-linear-to-br from-brand-white via-brand-red-light to-slate-100 shadow-sm">
+    <div className="flex min-h-64 items-center justify-center rounded-lg border border-brand-black/10 bg-linear-to-br from-brand-white via-brand-red-light to-amber-50 shadow-sm">
       <Server className="h-12 w-12 text-brand-red/45" aria-hidden />
     </div>
   )

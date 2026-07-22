@@ -13,7 +13,7 @@ export default async function ProjectsPage() {
           </p>
           <div className="rise-in rise-in-delay-1 mt-4">
             <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-brand-black sm:text-5xl">
-              Practicum Project Dashboard
+              Projects
             </h1>
           </div>
 

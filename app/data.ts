@@ -5,7 +5,7 @@ import {HOME_PAGE_QUERY} from '@/sanity/lib/queries'
 import type {HomePageData} from './types'
 
 const fallbackHome: Required<HomePageData> = {
-  title: 'Khoury Software Practicum',
+  title: 'Software Practicum',
   subtitle: 'Develop for industry partners',
   callsToAction: [
     {label: 'For students', href: '/students', audience: 'students'},

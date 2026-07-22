@@ -27,7 +27,7 @@ const fallbackGalleryImages = [
 ]
 
 export const metadata: Metadata = {
-  title: 'About the Professional Practicum',
+  title: 'About the Practicum',
   description:
     'Learn how Khoury College students work in small teams with faculty and industry partners to solve real-world problems.',
 }

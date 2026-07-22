@@ -23,7 +23,7 @@ export default async function Home() {
       <section className="relative isolate flex min-h-screen w-full items-center bg-brand-white pb-20 pt-36 sm:pb-24 sm:pt-40">
         <div
           aria-hidden
-          className="gradient-enter absolute inset-0 -z-20 bg-[radial-gradient(circle_at_15%_8%,rgba(200,16,46,0.16),transparent_34%),radial-gradient(circle_at_88%_22%,rgba(219,234,254,0.62),transparent_30%),linear-gradient(135deg,rgba(255,255,255,1)_0%,rgba(255,247,248,1)_46%,rgba(248,250,252,1)_100%)]"
+          className="gradient-enter absolute inset-0 -z-20 bg-[radial-gradient(circle_at_15%_8%,rgba(200,16,46,0.16),transparent_34%),radial-gradient(circle_at_88%_22%,rgba(255,225,181,0.5),transparent_30%),linear-gradient(135deg,rgba(255,253,248,1)_0%,rgba(255,241,242,1)_46%,rgba(255,247,232,1)_100%)]"
         />
         <div
           aria-hidden

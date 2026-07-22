@@ -75,7 +75,7 @@ export default function NavBar() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? 'Close menu' : 'Open menu'}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-black/10 bg-brand-white-soft/90 text-brand-black md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-black/10 bg-white text-brand-black shadow-sm md:hidden"
         >
           {open ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
         </button>
@@ -109,10 +109,7 @@ export default function NavBar() {
                       : 'text-brand-black/60 hover:text-brand-black',
                   )}
                 >
-                  <span className="flex items-center">
-                    {active && <span className="h-1.5 w-1.5 rounded-full bg-brand-red" />}
-                    {item.label}
-                  </span>
+                  <span>{item.label}</span>
                 </Link>
               )
             })}
