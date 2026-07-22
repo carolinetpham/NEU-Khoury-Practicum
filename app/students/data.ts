@@ -9,7 +9,7 @@ const fallbackStudents = {
   seoDescription:
     'Explore CS 4535 Industry Practicum, a client-facing software engineering course, and apply to join a future cohort.',
   heroLabel: 'For students',
-  heroTitle: 'Build software that matters beyond the classroom.',
+  heroTitle: 'Build beyond the classroom.',
   heroIntroduction:
     'CS 4535 Industry Practicum places you on a small full-stack team working directly with an industry partner. You will turn an open-ended client need into a tested solution, a professional handoff, and a story you can take into your career.',
   heroCtaLabel: 'Apply for the practicum',

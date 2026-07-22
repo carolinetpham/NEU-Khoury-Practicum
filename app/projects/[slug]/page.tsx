@@ -2,12 +2,15 @@ import Link from 'next/link'
 import {notFound} from 'next/navigation'
 import {ArrowLeft, ArrowUpRight, Code2, Server} from 'lucide-react'
 
-import {getProjectBySlug, getProjectSlugs} from '../data'
+import {getProjectBySlug} from '../data'
 import type {
   ProjectDetailBlockProps,
   ProjectPageProps,
   ProjectProps,
 } from '../types'
+
+// Keep individual project pages in sync with their Sanity documents.
+export const dynamic = 'force-dynamic'
 
 function ProjectHeroMedia({project}: ProjectProps) {
   const imageUrl = project.featuredImage?.asset?.url
@@ -24,7 +27,7 @@ function ProjectHeroMedia({project}: ProjectProps) {
   }
 
   return (
-    <div className="flex min-h-64 items-center justify-center rounded-lg border border-brand-black/10 bg-linear-to-br from-brand-white via-brand-red-light to-slate-100 shadow-sm">
+    <div className="flex min-h-64 items-center justify-center rounded-lg border border-brand-black/10 bg-linear-to-br from-brand-white via-brand-red-light to-amber-50 shadow-sm">
       <Server className="h-12 w-12 text-brand-red/45" aria-hidden />
     </div>
   )
@@ -46,14 +49,6 @@ function DetailBlock({
       </div>
     </section>
   )
-}
-
-export async function generateStaticParams() {
-  const slugs = await getProjectSlugs()
-
-  return slugs
-    .filter((project): project is {slug: string} => Boolean(project.slug))
-    .map((project) => ({slug: project.slug}))
 }
 
 export default async function ProjectDetailPage({params}: ProjectPageProps) {

@@ -2,7 +2,7 @@ import {DocumentIcon} from '@sanity/icons'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 const defaultHomePage = {
-  title: 'Khoury Software Practicum',
+  title: 'Software Practicum',
   subtitle: 'Develop for industry partners',
   callsToAction: [
     {

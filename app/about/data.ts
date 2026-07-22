@@ -6,7 +6,7 @@ import type {AboutPageData} from './types'
 
 const fallbackAbout = {
   heroLabel: 'About',
-  eyebrow: 'Professional Practicum at Khoury College',
+  eyebrow: 'The Practicum',
   introduction:
     'Professional Practicum blends rigorous coursework with faculty and client mentorship so students can solve real-world problems in a professional setting.',
   heroCtaLabel: 'Explore projects',

@@ -51,7 +51,7 @@ function ProjectMedia({project}: ProjectProps) {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-brand-white via-brand-red-light to-slate-100">
+    <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-brand-white via-brand-red-light to-amber-50">
       <Server className="h-10 w-10 text-brand-red/45" aria-hidden />
     </div>
   )
